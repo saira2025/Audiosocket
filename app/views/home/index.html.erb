@@ -1,0 +1,11 @@
+<h1>HOME PAGE</h1>
+<br>
+<% if user_signed_in? %> 
+  <%= current_user.email %>
+  <br> <br>
+  <%= link_to 'Sign out', destroy_user_session_path ,method: :delete%>
+  <% else %>
+  <%= link_to 'Login', new_user_session_path %>
+  <br> <br>
+  <%= link_to 'SignUp', new_user_registration_path %>
+<% end %>
