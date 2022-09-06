@@ -2,6 +2,7 @@
 <br>
 <% if user_signed_in? %> 
   <%= current_user.email %>
+  <p> you are a <%= current_user.role %></p>
   <br> <br>
   <%= link_to 'Sign out', destroy_user_session_path ,method: :delete%>
   <% else %>
