@@ -1,4 +1,6 @@
-#user 
+# frozen_string_literal: true
+
+# user
 #
 class User < ApplicationRecord
   # Include default devise modules. Others available are:
@@ -6,6 +8,4 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
   enum role: %i[artist manager]
-  
-  
 end
