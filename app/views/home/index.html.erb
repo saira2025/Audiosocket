@@ -1,0 +1,13 @@
+<div class="container-fluid w-25 border rounded shadow mt-5 p-4 text-center">
+<h1>HOME PAGE</h1>
+<br>
+<% if user_signed_in? %> 
+  <%= current_user.email %>
+  <p> you are a <%= current_user.role %></p>
+  <br> <br>
+  <%= link_to 'Sign out', destroy_user_session_path ,method: :delete%>
+  <% else %>
+  <%= link_to 'Login', new_user_session_path %>
+  <br> <br>
+  <%= link_to 'SignUp', new_user_registration_path %>
+<% end %>
