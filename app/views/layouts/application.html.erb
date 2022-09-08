@@ -2,6 +2,8 @@
 <html>
   <head>
     <title>Audiosocket</title>
+    <link rel="shortcut icon" href="pic.ico">
+    
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -10,6 +12,8 @@
   </head>
 
   <body>
+    <%= render "header/header" %>
+
     <% if notice.present? %>
       <p class="alert alert-success"><%= notice %></p>
     <% end %>
@@ -18,5 +22,6 @@
       <p class="alert alert-danger"><%= alert %></p>
     <% end %>
     <%= yield %>
+    <%= render "header/footer" %>
   </body>
 </html>
