@@ -21,7 +21,11 @@
     <% if alert.present? %>
       <p class="alert alert-danger"><%= alert %></p>
     <% end %>
-    <%= yield %>
+    <div class="container">
+      <div>
+        <%= yield %>
+      </div>
+    </div>
     <%= render "header/footer" %>
   </body>
 </html>

@@ -6,7 +6,7 @@ class AuditionsController < ApplicationController
 
   # GET audition/index
   def index
-    @auditions = Audition.all
+    @auditions = Audition.all.page(params[:page])
   end
 
   # Post audition/new
