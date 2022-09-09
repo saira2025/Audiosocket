@@ -1,3 +1,4 @@
+# form html
 <div class="container-fluid w-25 border rounded shadow mt-5 p-4 text-center" >
   <h2>Submit Audition </h2>
   <%= form_for  @audition  do |f| %>
@@ -18,7 +19,13 @@
       <%= f.text_field :artist_name, autofocus: true, autocomplete: "artist_name", class: "form-control" %>
     </div>
     <div class="dropdown">
-      <%= f.select :genre, Audition.genres.keys.to_a %>
+      <div class="dropdown field mb-3 text-start">
+        <%= f.label :Select_Genre, class: "form-label" %><br />
+        <%= f.select :genre, options_for_select(Audition.genres.keys.to_a.map {|key| [key.titleize, key]}), {}, class: "mx-2 form-select"  %>
+      </div>
+    <div class="dropdown field mb-3 text-start">
+      <%= f.label :How_did_you_hear_about_us, class: "form-label" %> <br />
+      <%= f.select :about_us, options_for_select([['Twiiter', 'twiiter'],['Facebook', 'facebook'],['Instagram', 'instagram']]), {}, class: "mx-2 form-select" %>
     </div>
     <div class="actions mb-2">
       <%= f.submit "Submit Audition", class: 'btn btn-primary btn-lg' %>
