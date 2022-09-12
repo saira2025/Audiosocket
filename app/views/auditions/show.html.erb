@@ -8,6 +8,11 @@
   <h5>Email:</h5><%= @audition.email %>
   <h5>Artist Name:</h5><%= @audition.artist_name %> 
   <h5>Genre:</h5><%= @audition.genre %> 
+  <h5>Hear About Us:</h5><%= @audition.about_us %> 
+   <div>
+    <strong>Additional_Info:</strong>
+    <%= @audition.additional_info.html_safe %> 
+   </div> 
   </p>
   </div>
 </div>

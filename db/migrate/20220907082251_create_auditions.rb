@@ -9,6 +9,7 @@ class CreateAuditions < ActiveRecord::Migration[5.2]
       t.string :email
       t.string :artist_name
       t.integer :genre
+      t.string :about_us
 
       t.timestamps
     end
