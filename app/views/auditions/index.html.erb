@@ -1,33 +1,35 @@
 <div class="table-responsive">
-  <table class="table table-sm">
-    <thead>
-      <tr>
-        <th scope="col">ID</th>
-        <th scope="col">NAME</th>
-        <th scope="col">ARTIST</th>
-        <th scope="col">EMAIL</th>
-        <th scope="col">GENRES</th>
-        <th scope="col">SUBMITTED</th>
-        <th scope="col">ASSIGN TO</th>
-        <th scope="col">STATUS</th>
+  <div class="container-fluid w-75 border rounded shadow mt-5 p-4 text-center" >
+    <table class="table table-sm">
+      <thead>
+        <tr>
+          <th scope="col">ID</th>
+          <th scope="col">NAME</th>
+          <th scope="col">ARTIST</th>
+          <th scope="col">EMAIL</th>
+          <th scope="col">GENRES</th>
+          <th scope="col">SUBMITTED</th>
+          <th scope="col">ASSIGN TO</th>
+          <th scope="col">STATUS</th>
 
-      </tr>
-    </thead>
-  <tbody>
-    <% @auditions.each do |audition| %>
-      <tr>
-        <td><input type="checkbox" name="brand"> <%= audition.id %> </td>
-        <td><%= audition.first_name %> <%= audition.last_name %> </td>
-        <td ><%= audition.artist_name %> </td>
-        <td><%= audition.email %></td>
-        <td><%= audition.genre %> </td>
-        <td><%= audition.created_at %></td>
-        <td>Jack</td>
-        <td>Active</td>
-      </tr>
-    <% end %>
-  </tbody>
-  </table>
+        </tr>
+      </thead>
+    <tbody>
+      <% @auditions.each do |audition| %>
+        <tr>
+          <td><input type="checkbox" name="brand"> <%= audition.id %> </td>
+          <td><%= audition.first_name %> <%= audition.last_name %> </td>
+          <td ><%= audition.artist_name %> </td>
+          <td><%= audition.email %></td>
+          <td><%= audition.genre %> </td>
+          <td><%= audition.created_at %></td>
+          <td>Jack</td>
+          <td>Active</td>
+        </tr>
+      <% end %>
+    </tbody>
+    </table>
+  </div>
 </div>
 
 
