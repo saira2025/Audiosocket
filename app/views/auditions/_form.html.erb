@@ -23,6 +23,7 @@
       <%= f.label :Select_Genre, class: "form-label" %><br />
       <%= f.select :genre, options_for_select(Audition.genres.keys.to_a.map {|key| [key.titleize, key]}), {}, class: "mx-2 form-select"  %>
     </div>
+    </div>
     <div class="dropdown field mb-3 text-start">
       <%= f.label :How_did_you_hear_about_us, class: "form-label" %> <br />
       <%= f.select :about_us, options_for_select([['Twiiter', 'twiiter'],['Facebook', 'facebook'],['Instagram', 'instagram']]), {}, class: "mx-2 form-select" %>
@@ -30,6 +31,12 @@
     <div class="field mb-3 text-start">
       <%= f.label :Additional_Info, class: "form-label" %>
       <%= f.cktext_area :additional_info, autofocus: true, autocomplete: "additional_info", class: "form-control" %>
+    </div>
+    <div class="dropdown">
+    <div class="field mb-3 text-start">
+      <%= f.label :Status, class: "form-label" %><br />
+      <%= f.select :status, options_for_select(Audition.statuses.keys.to_a.map {|key| [key.titleize, key]}), {}, class: "mx-2 form-select"  %>
+    </div>
     </div>
     <div class="actions mb-2">
       <%= f.submit "Submit Audition", class: 'btn btn-primary btn-lg' %>
