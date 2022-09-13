@@ -1,6 +1,40 @@
-<div class="table-responsive">
+<nav class="navbar navbar-expand-lg bg-light"></nav>
+<div style="text-align:end">
+  <%= link_to "Logout",destroy_user_session_path, method: :delete, class: "nav-link" %></a>
+</div>
+</nav>
+<nav class="navbar navbar-expand-lg bg-light">
+<div class="container-fluid">
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+      <li class="nav-item">
+        <a class="nav-link active" aria-current="page" href="">All</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link active" aria-current="page" href="">Pending</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link active" aria-current="page" href="">Approved</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link active" aria-current="page" href="">Recieved</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link active" aria-current="page" href="">Delete</a>
+      </li>
+    </ul>
+    <form class="d-flex" role="search">
+      <div class="d-flex">
+        <%= render 'auditions/search_form' %>
+        <input class="form-control me-2 w-50" type="search" placeholder="Select Date Range" aria-label="Search">
+      </div>
+    </form>
+  </div>
+</div>
+</nav> 
   <table class="table table-sm">
     <thead>
+      <th scope="col">Id</th>
       <th scope="col"><%= sortable "first_name" , "Name" %></th>
       <th scope="col"><%= sortable "artist_name" , "ARTIST" %></th>
       <th scope="col"><%= sortable "email", "EMAIL" %></th>
@@ -26,5 +60,3 @@
   </table>
   <%= paginate @auditions %>
 </div>
-
-
