@@ -12,41 +12,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20_220_912_074_947) do # rubocop:disable Metrics/BlockLength
+ActiveRecord::Schema.define(version: 20_220_913_042_747) do # rubocop:disable Metrics/BlockLength
   # These are extensions that must be enabled in order to support this database
   enable_extension 'plpgsql'
-
-  create_table 'action_text_rich_texts', force: :cascade do |t|
-    t.string 'name', null: false
-    t.text 'body'
-    t.string 'record_type', null: false
-    t.bigint 'record_id', null: false
-    t.datetime 'created_at', null: false
-    t.datetime 'updated_at', null: false
-    t.index %w[record_type record_id name], name: 'index_action_text_rich_texts_uniqueness', unique: true
-  end
-
-  create_table 'active_storage_attachments', force: :cascade do |t|
-    t.string 'name', null: false
-    t.string 'record_type', null: false
-    t.bigint 'record_id', null: false
-    t.bigint 'blob_id', null: false
-    t.datetime 'created_at', null: false
-    t.index ['blob_id'], name: 'index_active_storage_attachments_on_blob_id'
-    t.index %w[record_type record_id name blob_id], name: 'index_active_storage_attachments_uniqueness',
-                                                    unique: true
-  end
-
-  create_table 'active_storage_blobs', force: :cascade do |t|
-    t.string 'key', null: false
-    t.string 'filename', null: false
-    t.string 'content_type'
-    t.text 'metadata'
-    t.bigint 'byte_size', null: false
-    t.string 'checksum', null: false
-    t.datetime 'created_at', null: false
-    t.index ['key'], name: 'index_active_storage_blobs_on_key', unique: true
-  end
 
   create_table 'auditions', force: :cascade do |t|
     t.string 'first_name'
@@ -54,10 +22,11 @@ ActiveRecord::Schema.define(version: 20_220_912_074_947) do # rubocop:disable Me
     t.string 'email'
     t.string 'artist_name'
     t.integer 'genre'
+    t.string 'about_us'
     t.datetime 'created_at', null: false
     t.datetime 'updated_at', null: false
-    t.string 'about_us'
     t.text 'additional_info'
+    t.integer 'status', default: 0
   end
 
   create_table 'ckeditor_assets', force: :cascade do |t|
@@ -92,6 +61,5 @@ ActiveRecord::Schema.define(version: 20_220_912_074_947) do # rubocop:disable Me
     t.index ['reset_password_token'], name: 'index_users_on_reset_password_token', unique: true
   end
 
-  add_foreign_key 'active_storage_attachments', 'active_storage_blobs', column: 'blob_id'
   add_foreign_key 'songs', 'auditions'
 end

@@ -1,19 +1,49 @@
-<div class="table-responsive">
-  <div class="container-fluid w-75 border rounded shadow mt-5 p-4 text-center" >
-    <table class="table table-sm">
-      <thead>
-        <tr>
-          <th scope="col">ID</th>
-          <th scope="col">NAME</th>
-          <th scope="col">ARTIST</th>
-          <th scope="col">EMAIL</th>
-          <th scope="col">GENRES</th>
-          <th scope="col">SUBMITTED</th>
-          <th scope="col">ASSIGN TO</th>
-          <th scope="col">STATUS</th>
+<div style="text-align:end">
+  <%= link_to "Logout",destroy_user_session_path, method: :delete, class: "nav-link" %>
+</div>
+  <%= link_to "Back",auditions_path, class: 'btn btn-primary btn-sm' %>
 
-        </tr>
-      </thead>
+  <nav class="navbar navbar-expand-lg bg-light mt-2">
+    <div class="container-fluid">
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <%= link_to 'All', auditions_path, class: "nav-link active" %>
+          </li>
+          <li class="nav-item">
+            <%= link_to 'Pending', auditions_path(status: 'pending'), class: "nav-link active" %>
+          </li>
+          <li class="nav-item">
+            <%= link_to 'Accepted', auditions_path(status: 'accepted'), class: "nav-link active" %>
+          </li>
+          <li class="nav-item">
+            <%= link_to 'Rejected', auditions_path(status: 'rejected'), class: "nav-link active" %>
+          </li>
+          <li class="nav-item">
+            <%= link_to 'Deleted', auditions_path(status: 'deleted'), class: "nav-link active" %>
+          </li>
+        </ul>
+        <form class="d-flex" role="search">
+          <div class="d-flex">
+            <%= render 'auditions/search_form' %>
+            <input class="form-control me-2 w-50" type="search" placeholder="Select Date Range" aria-label="Search">
+          </div>
+        </form>
+      </div>
+    </div>
+  </nav> 
+
+  <table class="table table-sm">
+    <thead>
+      <th scope="col"><%= sortable "id" , "Id" %> </th>
+      <th scope="col"><%= sortable "first_name" , "Name" %></th>
+      <th scope="col"><%= sortable "artist_name" , "ARTIST" %></th>
+      <th scope="col"><%= sortable "email", "EMAIL" %></th>
+      <th scope="col"><%= sortable "genre", "GENRES" %></th>
+      <th scope="col"><%= sortable "submitted", "SUBMITTED" %></th>
+      <th scope="col">ASSIGN TO</th>
+      <th scope="col"><%= sortable "status", "STATUS" %></th>
+    </thead>
     <tbody>
       <% @auditions.each do |audition| %>
         <tr>
@@ -24,12 +54,12 @@
           <td><%= audition.genre %> </td>
           <td><%= audition.created_at %></td>
           <td>Jack</td>
-          <td>Active</td>
+          <td><%= audition.status %></td>
         </tr>
       <% end %>
     </tbody>
-    </table>
-  </div>
+  </table>
+
+  <%= paginate @auditions %>
+
 </div>
-
-

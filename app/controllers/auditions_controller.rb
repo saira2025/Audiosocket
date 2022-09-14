@@ -3,10 +3,19 @@
 # Audition controller
 class AuditionsController < ApplicationController
   before_action :find_audition, only: [:show]
+  helper_method :sort_column, :sort_direction
 
   # GET audition/index
   def index
-    @auditions = Audition.all.page(params[:page])
+    result = AuditionStatus.call(
+      status: params[:status],
+      search: params[:q],
+      page: params[:page],
+      sort_column: sort_column,
+      sort_direction: sort_direction
+    )
+    @q = result.q
+    @auditions = result.auditions
   end
 
   # Post audition/new
@@ -18,7 +27,7 @@ class AuditionsController < ApplicationController
   def create
     @audition = Audition.new(audition_params)
     if @audition.save
-      redirect_to @audition
+      redirect_to auditions_path
     else
       render 'new'
     end
@@ -35,6 +44,14 @@ class AuditionsController < ApplicationController
 
   def audition_params
     params.require(:audition).permit(:first_name, :last_name, :email, :artist_name, :genre, :about_us,
-                                     :additional_info, songs_attributes: [:link])
+                                     :additional_info, :status, songs_attributes: [:link])
+  end
+
+  def sort_column
+    Audition.column_names.include?(params[:sort]) ? params[:sort] : 'first_name'
+  end
+
+  def sort_direction
+    %w[asc desc].include?(params[:direction]) ? params[:direction] : 'asc'
   end
 end
