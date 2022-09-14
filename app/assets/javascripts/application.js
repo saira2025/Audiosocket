@@ -15,6 +15,8 @@
 //= require activestorage
 //= require turbolinks
 //= require jquery3
+//= require cocoon
+//= require validation
 //= require popper
 //= require bootstrap
 //= require select2-full
