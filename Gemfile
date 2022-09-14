@@ -67,6 +67,7 @@ end
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'bootstrap', '~> 5.2.0'
 gem 'devise'
+gem 'interactor-rails'
 gem 'kaminari'
 gem 'ransack'
 gem 'select2-rails'

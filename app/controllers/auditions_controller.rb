@@ -7,8 +7,15 @@ class AuditionsController < ApplicationController
 
   # GET audition/index
   def index
-    @q = Audition.ransack(params[:q])
-    @auditions = @q.result.order("#{sort_column} #{sort_direction}").page(params[:page])
+    result = AuditionStatus.call(
+      status: params[:status],
+      search: params[:q],
+      page: params[:page],
+      sort_column: sort_column,
+      sort_direction: sort_direction
+    )
+    @q = result.q
+    @auditions = result.auditions
   end
 
   # Post audition/new
