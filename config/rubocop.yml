@@ -1,0 +1,4 @@
+Metrics/AbcSize:
+  IgnoredPatterns: ['\Abreadcrumb']
+AllCops:
+  SuggestExtensions: false
