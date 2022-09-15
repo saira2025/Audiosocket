@@ -2,7 +2,7 @@
 
 Rails.application.routes.draw do
   mount Ckeditor::Engine => '/ckeditor'
-  root to: 'auditions#new'
+  root to: 'home#index'
 
   devise_for :users
 
