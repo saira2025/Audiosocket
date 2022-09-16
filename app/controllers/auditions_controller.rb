@@ -2,7 +2,7 @@
 
 # Audition controller
 class AuditionsController < ApplicationController
-  before_action :find_audition, only: [:show, :edit, :update]
+  before_action :find_audition, only: %i[show edit update]
   helper_method :sort_column, :sort_direction
 
   # GET audition/index
@@ -42,14 +42,17 @@ class AuditionsController < ApplicationController
   def show; end
 
   # Put audition/update:id
-  def edit
-    @audition = Audition.find(params[:id])
-  end
+  def edit; end
 
   # Put audition/update:id
-  def update
-    @audition = Audition.find(params[:id])
-    if @audition.update(audition_params)
+  def update # rubocop:disable Metrics/MethodLength
+    @audition.update(audition_params)
+    case @audition.status
+    when 'accepted'
+      UserMailer.welcome_email(@audition).deliver_now
+      redirect_to @audition
+    when 'rejected'
+      UserMailer.rejected_email(@audition).deliver_now
       redirect_to @audition
     else
       render 'edit'
@@ -57,6 +60,7 @@ class AuditionsController < ApplicationController
   end
 
   def destroy; end
+
   private
 
   def find_audition
