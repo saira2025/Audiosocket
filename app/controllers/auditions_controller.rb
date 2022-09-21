@@ -31,6 +31,9 @@ class AuditionsController < ApplicationController
   # Post audition/Create
   def create
     @audition = Audition.new(audition_params)
+    @audition.user = current_user
+    return unless user_signed_in? && current_user.artist?
+
     if @audition.save
       redirect_to @audition
     else
@@ -46,6 +49,7 @@ class AuditionsController < ApplicationController
 
   # Put audition/update:id
   def update # rubocop:disable Metrics/MethodLength
+    # authorize @audition
     @audition.update(audition_params)
     case @audition.status
     when 'accepted'
@@ -68,8 +72,8 @@ class AuditionsController < ApplicationController
   end
 
   def audition_params
-    params.require(:audition).permit(:first_name, :last_name, :email, :artist_name, :genre, :about_us,
-                                     :additional_info, :status, songs_attributes: [:link])
+    params.require(:audition).permit(:first_name, :last_name, :email, :artist_name, :genre, :about_us, :additional_info,
+                                     :status, songs_attributes: [:link])
   end
 
   def sort_column
