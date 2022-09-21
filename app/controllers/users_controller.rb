@@ -24,6 +24,6 @@ class UsersController < ApplicationController
   end
 
   def user_params
-    params.require(:user).permit(:country, :bio, :social_links, :website_links)
+    params.require(:user).permit(:country, :bio , :website_link, :image, social_link: [])
   end
 end
