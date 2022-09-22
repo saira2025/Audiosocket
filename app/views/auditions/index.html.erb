@@ -39,31 +39,33 @@
 
   <table class="table table-sm">
     <thead>
-      <th scope="col"><%= sortable "id" , "Id" %> </th>
-      <th scope="col"><%= sortable "first_name" , "Name" %></th>
-      <th scope="col"><%= sortable "artist_name" , "ARTIST" %></th>
-      <th scope="col"><%= sortable "email", "EMAIL" %></th>
-      <th scope="col"><%= sortable "genre", "GENRES" %></th>
-      <th scope="col"><%= sortable "submitted", "SUBMITTED" %></th>
-      <th scope="col">ASSIGN TO</th>
-      <th scope="col"><%= sortable "status", "STATUS" %></th>
+      </tr>
+        <th scope="col"><%= sortable "id" , "Id" %> </th>
+        <th scope="col"><%= sortable "first_name" , "Name" %></th>
+        <th scope="col"><%= sortable "artist_name" , "ARTIST" %></th>
+        <th scope="col"><%= sortable "email", "EMAIL" %></th>
+        <th scope="col"><%= sortable "genre", "GENRES" %></th>
+        <th scope="col"><%= sortable "submitted", "SUBMITTED" %></th>
+        <th scope="col">ASSIGN TO</th>
+        <th scope="col"><%= sortable "status", "STATUS" %></th>
+      </tr>
     </thead>
-    <tbody>
+    <tbody id="audition-index">
       <% @auditions.each do |audition| %>
-        <tr>
-          <td><input type="checkbox" name="brand"> <%= audition.id %> </td>
-          <td><%= audition.first_name %> <%= audition.last_name %> </td>
-          <td ><%= audition.artist_name %> </td>
-          <td><%= audition.email %></td>
-          <td><%= audition.genre %> </td>
-          <td><%= audition.created_at %></td>
-          <td>Jack</td>
-          <td><%= audition.status %></td>
-        </tr>
+          <tr class = "audition_list" data-url="<%= audition_path(audition, format: :js)%>">
+            <td><input type="checkbox" name="brand"> <%= audition.id %> </td>
+            <td><%= audition.first_name %> <%= audition.last_name %> </td>
+            <td ><%= audition.artist_name %> </td>
+            <td><%= audition.email %></td>
+            <td><%= audition.genre %> </td>
+            <td><%= audition.created_at %></td>
+            <td>Jack</td>
+            <td><%= audition.status %></td>
+          </tr>
       <% end %>
     </tbody>
   </table>
 
   <%= paginate @auditions %>
-
+  <div id="show-modal" ></div>
 </div>

@@ -2,7 +2,7 @@
 
 # Audition controller
 class AuditionsController < ApplicationController
-  before_action :find_audition, only: [:show]
+  before_action :find_audition, only: [:show, :edit, :update]
   helper_method :sort_column, :sort_direction
 
   # GET audition/index
@@ -32,7 +32,7 @@ class AuditionsController < ApplicationController
   def create
     @audition = Audition.new(audition_params)
     if @audition.save
-      redirect_to auditions_path
+      redirect_to @audition
     else
       render 'new'
     end
@@ -41,6 +41,22 @@ class AuditionsController < ApplicationController
   # Get audition/show:id
   def show; end
 
+  # Put audition/update:id
+  def edit
+    @audition = Audition.find(params[:id])
+  end
+
+  # Put audition/update:id
+  def update
+    @audition = Audition.find(params[:id])
+    if @audition.update(audition_params)
+      redirect_to @audition
+    else
+      render 'edit'
+    end
+  end
+
+  def destroy; end
   private
 
   def find_audition
