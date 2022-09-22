@@ -1,8 +1,8 @@
 <!-- form html -->
 <div id= "container" class="table-responsive"> 
   <div class="container-fluid w-75 border rounded shadow mt-5 p-4 text-center" >
-    <h2>Submit Audition </h2>
-    <%= form_for  @audition  do |f| %>
+  <h2>Submit Audition </h2>
+    <%= form_for [@user , @audition] do |f| %>
       <div class="field mb-3 text-start">
         <%= f.label :First_Name, class: "form-label" %>
         <%= f.text_field :first_name, autofocus: true, autocomplete: "first_name", class: "form-control" %>

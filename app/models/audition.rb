@@ -5,6 +5,7 @@ require 'csv'
 # Audition model
 class Audition < ApplicationRecord
   has_many :songs, inverse_of: :audition
+  belongs_to :user
   accepts_nested_attributes_for :songs, reject_if: :all_blank, allow_destroy: true
   paginates_per 14
   # Enums for genre
@@ -12,7 +13,7 @@ class Audition < ApplicationRecord
                  Celtic_Chamber Chanson Chorus Christian_Rap Cinematic Classical Classic_Rock Club Comedy Country Cult]
   enum status: %i[pending accepted rejected deleted]
 
-  # validation
+  # validation for songs
   validate do
     errors.add(:base, 'maximum four songs are allowed.') if songs.reject(&:marked_for_destruction?).length > 4
   end
