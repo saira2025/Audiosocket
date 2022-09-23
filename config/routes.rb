@@ -9,4 +9,6 @@ Rails.application.routes.draw do
   resources :auditions
 
   resources :users
+
+  resources :albums
 end

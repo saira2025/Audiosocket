@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 # This file is auto-generated from the current state of the database. Instead
 # of editing this file, please use the migrations feature of Active Record to
 # incrementally modify your database, and then regenerate this schema definition.
@@ -56,6 +54,9 @@ ActiveRecord::Schema.define(version: 20_220_923_064_213) do # rubocop:disable Me
     t.text 'additional_info'
     t.integer 'status', default: 0
     t.bigint 'user_id'
+    t.string 'country'
+    t.string 'bio'
+    t.string 'website_link'
     t.index ['user_id'], name: 'index_auditions_on_user_id'
   end
 
