@@ -6,6 +6,7 @@ class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   has_many :auditions
+  has_one_attached :image
 
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
@@ -20,6 +21,6 @@ class User < ApplicationRecord
   enum role: %i[artist manager]
 
   # Validations
-  validates :email, :password, :role, presence: true
-  validates :password, format: { with: PASSWORD_FORMAT }
+  validates :email, :role, presence: true
+  validates :password, presence: true, format: { with: PASSWORD_FORMAT }, on: :create
 end
