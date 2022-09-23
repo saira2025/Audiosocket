@@ -1,3 +1,6 @@
+# frozen_string_literal: true
+
+# schema
 # This file is auto-generated from the current state of the database. Instead
 # of editing this file, please use the migrations feature of Active Record to
 # incrementally modify your database, and then regenerate this schema definition.
@@ -10,7 +13,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20_220_923_064_213) do # rubocop:disable Metrics/BlockLength
+ActiveRecord::Schema.define(version: 20_220_923_124_035) do # rubocop:disable Metrics/BlockLength
   # These are extensions that must be enabled in order to support this database
   enable_extension 'plpgsql'
 
@@ -40,6 +43,8 @@ ActiveRecord::Schema.define(version: 20_220_923_064_213) do # rubocop:disable Me
     t.string 'name'
     t.datetime 'created_at', null: false
     t.datetime 'updated_at', null: false
+    t.bigint 'user_id'
+    t.index ['user_id'], name: 'index_albums_on_user_id'
   end
 
   create_table 'auditions', force: :cascade do |t|
@@ -54,9 +59,6 @@ ActiveRecord::Schema.define(version: 20_220_923_064_213) do # rubocop:disable Me
     t.text 'additional_info'
     t.integer 'status', default: 0
     t.bigint 'user_id'
-    t.string 'country'
-    t.string 'bio'
-    t.string 'website_link'
     t.index ['user_id'], name: 'index_auditions_on_user_id'
   end
 
@@ -97,6 +99,7 @@ ActiveRecord::Schema.define(version: 20_220_923_064_213) do # rubocop:disable Me
   end
 
   add_foreign_key 'active_storage_attachments', 'active_storage_blobs', column: 'blob_id'
+  add_foreign_key 'albums', 'users'
   add_foreign_key 'auditions', 'users'
   add_foreign_key 'songs', 'auditions'
 end
