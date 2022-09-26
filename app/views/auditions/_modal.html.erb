@@ -9,8 +9,9 @@
         <p> Artist Name: <%= @audition.artist_name %></p>
         <p> Song Links:
         <% @audition.songs.each_with_index do |song,index| %>
-          <a href="<%= song.link %>"><%= "link-#{index+1}"%></a>
-          <br>
+          <div>
+            <a href="<%= song.link %>"><%= "link-#{index+1}"%></a>
+          </div>
         <% end %>
         </p>
         <p> Email: <%= @audition.email %></p>

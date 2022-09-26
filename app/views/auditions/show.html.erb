@@ -1,3 +1,3 @@
-<p> Name: <%= @audition.first_name %></p>
-<p> Additional Info: <%= @audition.additional_info.html_safe?%></p>
+<p> <%= @audition.first_name %> ! </p>
+<p> THANK YOU FOR SUBMITING YOUR AUDITION!</p>
 <%= link_to "Logout",destroy_user_session_path, method: :delete, class: 'btn btn-primary btn-sm' %>
