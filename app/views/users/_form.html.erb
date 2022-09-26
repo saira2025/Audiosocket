@@ -4,8 +4,8 @@
     <div class="row">
       <div class="col-md-3 ">
         <div class="list-group ">
-          <a href="#" class="list-group-item list-group-item-action active">Profile</a>
-          <a href="#" class="list-group-item list-group-item-action">Music</a>
+          <a class="list-group-item list-group-item-action active">Profile</a>
+          <a class="list-group-item list-group-item-action">Music</a>
         </div>
       </div>
       <div class="col-md-9">
@@ -22,7 +22,6 @@
                 <%= form_for @user do |f| %>
                   <div class="form-group row mb-3">
                     <div class="field mb-3 text-start">
-                      <% byebug %>
                       <%= f.label :Artist_Name, class: "col-4 col-form-label"%>
                       <%= f.text_field :Artist_Name, value: current_user.auditions&.last&.artist_name , class: 'text_field', :disabled => true %>
                     </div>

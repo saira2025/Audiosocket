@@ -1,0 +1,38 @@
+<div id="container" class="table-responsive">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-3 ">
+        <div class="list-group ">
+          <a class="list-group-item list-group-item-action active">Profile</a>
+          <a class="list-group-item list-group-item-action">Music</a>
+        </div>
+      </div>
+      <div class="col-md-9">
+        <div class="card">
+          <div class="card-body">
+            <div class="row">
+              <div class="col-md-12">
+                <h4>Albums</h4>
+                <hr>
+              </div>
+                <div>
+                  <%= link_to "CREATE ALBUM", new_album_path(@album) %>
+                </div>
+                <ul>
+                <% @albums.each do |album| %>
+                <h2> <%= link_to album.name, edit_album_path(album), class: "text-decoration-none text-dark" %> </h2>
+                
+                <%= link_to "Edit", edit_album_path(album) %>
+                <%= link_to "Delete", album_path(album), method: :delete, data: {confirm: "Are you sure?"} %>
+                <% end %>
+              </ul>
+            </div>
+              <div class="row">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -7,6 +7,7 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   has_many :auditions
   has_one_attached :image
+  has_many :albums
 
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
