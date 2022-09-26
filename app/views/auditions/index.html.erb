@@ -1,9 +1,7 @@
-<div style="text-align:end">
+<div style="text-align:end mb-2">
   <%= link_to "Logout",destroy_user_session_path, method: :delete, class: 'btn btn-primary btn-sm' %>
 </div>
-<div style="text-align:start">
-  <%= link_to "Back",auditions_path, class: 'btn btn-primary btn-sm' %>
-</div>
+
 <div style="text-align:end">
     <%= link_to "Export CSV" , "#{auditions_path}.csv?status=#{params[:status]}", class: 'btn btn-primary btn-sm' %>
 </div>
@@ -30,7 +28,6 @@
       <form class="d-flex" role="search">
         <div class="d-flex">
           <%= render 'auditions/search_form' %>
-          <input class="form-control me-2 w-50" type="search" placeholder="Select Date Range" aria-label="Search">
         </div>
       </form>
     </div>

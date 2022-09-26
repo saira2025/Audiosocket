@@ -22,7 +22,9 @@
         <%= f.text_field :artist_name, autofocus: true, autocomplete: "artist_name", class: "form-control" %>
       </div>
       <div class="field mb-3 text-start" >
-        <%= f.label :Add_songs_link_to_songs, class: "form-label"%><br />
+        <div>
+          <%= f.label :Add_songs_link_to_songs, class: "form-label"%>
+        </div>
         <div class="songs">
             <%= f.fields_for :songs do |song| %> <br>
             <%= render 'song_fields', f: song %>

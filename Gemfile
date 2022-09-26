@@ -72,6 +72,7 @@ gem 'interactor-rails'
 gem 'kaminari'
 gem 'ransack'
 gem 'select2-rails'
+gem 'stripe'
 gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
 
 gem 'letter_opener', group: :development

@@ -10,5 +10,6 @@ Rails.application.routes.draw do
 
   resources :users
 
+  post 'payments/create', to: 'payments#create'
   resources :albums
 end

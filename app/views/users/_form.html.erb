@@ -68,11 +68,11 @@
 
                   <div class="form-group row mt-3">
                     <div class="offset-4 col-6 mt-4">
-                      <%= f.submit "UPGRADE TO PRO", class: 'btn btn-primary' %>
+                      <%= link_to "UPGRADE TO PRO", payments_create_path, params: {id:@user.id},class: "btn btn-primary btn-lg #{params[:payment_succeeded] ? "disabled": ""}", method: :post, remote: true %>
                     </div>
                     <div class="offset-4 col-6 mt-4">
                       <%= f.submit "SAVE", class: 'btn btn-primary btn-lg' %>
-                      <%= f.submit "CANCEL", class: 'btn btn-primary btn-lg' %>
+                      <%= link_to "Cancel",edit_user_path(@user.id), class: 'btn btn-primary btn-lg' %>
                     </div>
                   </div>
                 <% end %>
