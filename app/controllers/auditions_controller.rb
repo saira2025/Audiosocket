@@ -32,7 +32,7 @@ class AuditionsController < ApplicationController
   def create
     @audition = Audition.new(audition_params)
     @audition.user = current_user
-    return unless user_signed_in? && current_user.artist?
+    return unless user_signed_in? && current_user.is_a?(Artist)
 
     if @audition.save
       redirect_to @audition

@@ -31,6 +31,10 @@
     <%= f.password_field :current_password, autocomplete: "current-password" %>
   </div>
 
+  <div class="offset-4 col-6 mt-4">
+    <%= link_to "UPGRADE TO PRO", payments_create_path, params: {id:@user.id},class: "btn btn-primary btn-lg #{params[:payment_succeeded] ? "disabled": ""}", method: :post, remote: true %>
+  </div>
+  
   <div class="actions">
     <%= f.submit "Update" %>
   </div>
