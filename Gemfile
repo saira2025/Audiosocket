@@ -46,6 +46,7 @@ gem 'paperclip'
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
+  gem 'letter_opener'
 end
 
 group :development do
@@ -74,5 +75,3 @@ gem 'ransack'
 gem 'select2-rails'
 gem 'stripe'
 gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
-
-gem 'letter_opener', group: :development

@@ -11,6 +11,8 @@ class User < ApplicationRecord
 
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
+
+  scope :simple_users, -> { where(type: nil) }
   # Constants
   PASSWORD_FORMAT = /\A
   (?=.{8,})          # Must contain 8 or more characters
@@ -18,10 +20,7 @@ class User < ApplicationRecord
   (?=.*[[:^alnum:]]) # Must contain a symbol
   /x.freeze
 
-  # Enums
-  enum role: %i[artist manager]
-
   # Validations
-  validates :email, :role, presence: true
+  validates :email, presence: true
   validates :password, presence: true, format: { with: PASSWORD_FORMAT }, on: :create
 end

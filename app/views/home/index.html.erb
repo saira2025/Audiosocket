@@ -3,12 +3,12 @@
   <br>
   <% if user_signed_in? %>
     <%= current_user.email %>
-    <% if current_user.artist? %>
+    <% if current_user.is_a?(Artist)%>
       <%= link_to 'New', new_audition_path %>
     <%else%>
       <%= link_to 'listing', auditions_path %> 
     <%end%>
-    <p> you are a <%= current_user.role %></p>
+    <p> you are a <%= current_user.type %></p>
     <br> <br>
     <%= link_to 'Sign out', destroy_user_session_path ,method: :delete%>
   <%else%>
