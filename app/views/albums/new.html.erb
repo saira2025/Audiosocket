@@ -1,1 +1,11 @@
-<%= render 'form' %>
+<%= form_with(model: [@user, @album], as: :user, url:user_albums_path, local: true) do |f| %>
+<%= f.label :name %>
+<%= f.text_field :name %><br>
+<div class="form-group row mb-3">
+  <%= f.label :picture, class: "col-4 col-form-label" %>
+  <div class="col-8">
+    <%= f.file_field :picture, class: "form-control" %>
+  </div>
+</div>
+<%= f.submit %>
+ <% end %>
