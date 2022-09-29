@@ -8,7 +8,7 @@ class UsersController < ApplicationController
 
   def update
     if @user.update(user_params)
-      redirect_to albums_path
+      redirect_to user_albums_path(current_user.id)
     else
       render 'edit'
     end

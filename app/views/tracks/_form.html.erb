@@ -1,0 +1,8 @@
+<%= form_with(model: [@user, @track], as: :user, url:user_album_tracks_path, local: true) do |f| %>
+<div>
+  <%= f.label :name %>
+  <%= f.text_field :name %> 
+</div>
+</div>
+<%= f.submit %>
+ <% end %>

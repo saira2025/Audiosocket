@@ -2,5 +2,6 @@
 
 class Album < ApplicationRecord
   belongs_to :user
+  has_many :tracks
   has_one_attached :picture
 end

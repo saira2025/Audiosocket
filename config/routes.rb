@@ -8,8 +8,11 @@ Rails.application.routes.draw do
 
   resources :auditions
 
-  resources :users
+  resources :users do
+    resources :albums do
+      resources :tracks
+    end
+  end
 
   post 'payments/create', to: 'payments#create'
-  resources :albums
 end
